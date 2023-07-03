@@ -4,7 +4,7 @@
   "description": "first react app for practice",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "devDependencies": {
     "parcel": "^2.9.3",
     "process": "^0.11.10"
-  }
+  },
+  "browserslist": [
+    ">0.3%, last 1 versions, not dead"
+  ]
 }
