@@ -1,0 +1,21 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.MainHeader {
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MainHeader .SearchBox {
+  padding: 20px;
+  height: 15px;
+  margin: 0.5rem 1rem;
+  flex: 1;
+  border-radius: 15px 50px;
+}

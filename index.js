@@ -1,16 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faSquareNfi } from "@fortawesome/free-solid-svg-icons";
 
-const heading1 = React.createElement(
-  "h1",
-  { key: "h1" },
-  "First React Project"
+const Navbar = (
+  <div className="MainHeader">
+    <FontAwesomeIcon icon={faSquareNfi} size="2xl" />
+    <input
+      type="text"
+      placeholder="Click here To Search"
+      className="SearchBox"
+    />
+    <FontAwesomeIcon icon={faUser} size="2xl" />
+  </div>
 );
-const heading2 = React.createElement("button", { key: "h2" }, "Click Me");
-const cotainerElm = React.createElement("section", { id: "container" }, [
-  heading1,
-  heading2,
-]);
-const ElmRoot = document.querySelector("#root");
-const root = ReactDOM.createRoot(ElmRoot);
-root.render(cotainerElm);
+
+const Container = () => {
+  return <section>{Navbar}</section>;
+};
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(<Container />);
