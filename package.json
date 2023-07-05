@@ -2,10 +2,11 @@
   "name": "react-basic-app",
   "version": "1.0.0",
   "description": "first react app for practice",
-  "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "parcel": "^2.9.3",
     "process": "^0.11.10"
   },
