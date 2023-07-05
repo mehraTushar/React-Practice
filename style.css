@@ -1,21 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   font-size: 14px;
 }
+body {
+  font-family: "Josefin Sans", cursive;
+}
 
-.MainHeader {
+.Navbar {
   margin: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.MainHeader .SearchBox {
+.Navbar .SearchBox {
   padding: 20px;
   height: 15px;
   margin: 0.5rem 1rem;
   flex: 1;
   border-radius: 15px 50px;
+}
+#circle {
+  height: 2rem;
+  width: 2rem;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.foodCardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.foodCardList > .card {
+  display: flex;
+  border-radius: 15px;
+  border: 2px solid black;
+  padding: 0.5rem;
+  margin: 1rem;
+  flex-direction: column;
+  max-width: 30%;
+  width: 30%;
+  width: auto;
+  align-items: center;
+}
+
+.foodCardList > .card > img {
+  width: 50%;
+  border-radius: 50%;
+}
+.foodCardList > .card > h2 {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+.foodCardList > .card p {
+  font-size: 1.1rem;
 }
