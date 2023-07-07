@@ -1,11 +1,10 @@
 {
-  "homepage": "https://mehratushar.github.io/React-Practice",
+  "homepage": "https://mehratushar.github.io/React-Practice/",
   "name": "react-basic-app",
   "version": "1.0.0",
   "description": "first react app for practice",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "rm -rf dist/ && npm run build && gh-pages -d dist",
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
