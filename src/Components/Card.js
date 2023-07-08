@@ -1,31 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { imgUrl } from "../config";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 const Card = ({ data }) => {
   return (
     <div className="card">
-      <h2>{data.strMeal}</h2>
-      <img src={data.strMealThumb} />
-      <div>
-        <div className="CategoryArea">
-          <p>Category: {data.strCategory}</p>
-          <p>Area: {data.strArea}</p>
+      <div className="">
+        <img src={imgUrl + data?.cloudinaryImageId} alt="Resturant Image" />
+      </div>
+      <div className="resturant-details">
+        <h4>{data?.name}</h4>
+        <p className="resturant-cuisines">{data?.cuisines.join(",")}</p>
+        <div className="resturant-bottom-details">
+          <span className="resturant-rating">
+            <FontAwesomeIcon icon={faStar} className="faStar" />
+            <span>{data?.avgRating}</span>
+          </span>
+          <span>{data?.slaString}</span>
+          <span>{data?.costForTwoString}</span>
         </div>
-        <h4>Instructions:</h4>
-        <p>{data.strInstructions}</p>
       </div>
-      <div className="recipieLink">
-        <p>Click Here For Recipe</p>
-
-        <a href={data.strYoutube} target="_blank">
-          <FontAwesomeIcon
-            icon={faPlay}
-            size="2xl"
-            className="recipieVideoIcon"
-          />
-        </a>
-      </div>
-      {/* <p>{data.strTags}</p> */}
-      <span id="circle"></span>
     </div>
   );
 };
