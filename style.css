@@ -59,6 +59,7 @@ body {
   width: 25%;
   max-width: 25%;
   border-radius: 50%;
+  margin: 0.5rem 0px;
 }
 .foodCardList > .card > h2 {
   font-size: 1.5rem;
@@ -94,4 +95,9 @@ body {
   font-size: 1rem;
   border-radius: 7px;
   margin: 0.5rem 0px;
+}
+.CategoryArea{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0px;
 }

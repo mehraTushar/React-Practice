@@ -6,6 +6,10 @@ const Card = ({ data }) => {
       <h2>{data.strMeal}</h2>
       <img src={data.strMealThumb} />
       <div>
+        <div className="CategoryArea">
+          <p>Category: {data.strCategory}</p>
+          <p>Area: {data.strArea}</p>
+        </div>
         <h4>Instructions:</h4>
         <p>{data.strInstructions}</p>
       </div>
