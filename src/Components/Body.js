@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
-import ShimerCard from "./shimmer";
+import ShimerCard from "./Shimmer";
 
 
 const filterArrList = [
@@ -93,8 +93,6 @@ const filterData = (searchTest, restaurantList) => {
   var res = restaurantList.filter((meal) => {
     return searchTest.toLowerCase() === ""? meal : meal?.data?.data?.name?.toLowerCase()?.includes(searchTest);
   });
-  console.log(res);
-  console.log(searchTest.toLowerCase());
   return res;
 };
 
