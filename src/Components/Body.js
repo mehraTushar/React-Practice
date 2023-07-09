@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
+import ShimerCard from "./shimmer";
 
 
 const filterArrList = [
@@ -18,7 +19,8 @@ const SearchCard = ({Text,RestaurantList,SetText,SetFilterRestaurantList}) =>{
           className="SearchBox"
           value={Text}
           onChange={(e) => {
-            SetText(e.target.value);            
+            SetText(e.target.value);      
+                  
           }}
         />
         <span>  
@@ -65,11 +67,16 @@ const Body = () => {
     } catch (ex) {}
   }
 
+  if(restaurantList.length === 0){
+    return <ShimerCard/>
+  }
+
   return filterRestaurantList.length == 0 ? (
-    <div><SearchCard Text={searchText}SetText={setSearchText} RestaurantList={restaurantList} SetFilterRestaurantList={setFilterRestaurantList} />No data</div>
+    <div><SearchCard Text={searchText}SetText={setSearchText} RestaurantList={restaurantList} SetFilterRestaurantList={setFilterRestaurantList} /><div className="NoMatchFound">Sorry No Match Found 😢</div></div>
   ) : (
     <>
       <SearchCard Text={searchText}SetText={setSearchText} RestaurantList={restaurantList} SetFilterRestaurantList={setFilterRestaurantList} />
+      {}
       <div className="foodCardList">
         {filterRestaurantList?.map((restaurant) => {
           if (restaurant.cardType != "restaurant") {
@@ -87,6 +94,7 @@ const filterData = (searchTest, restaurantList) => {
     return searchTest.toLowerCase() === ""? meal : meal?.data?.data?.name?.toLowerCase()?.includes(searchTest);
   });
   console.log(res);
+  console.log(searchTest.toLowerCase());
   return res;
 };
 
