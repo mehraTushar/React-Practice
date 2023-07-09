@@ -155,10 +155,16 @@ body {
   list-style: none;
 }
 .navbarLinks a,
-.mainHeading a {
+.mainHeading a,
+.foodCardList a {
   all: unset;
   cursor: pointer;
   font-weight: 600;
+}
+
+.foodCardList a {
+  all: unset;
+  cursor: pointer;
 }
 .uppperBody .filterCardSec {
   margin: 0px 3rem 0px 0px;
@@ -240,4 +246,46 @@ body {
   to {
     box-shadow: inset -3px 0px 0px transparent;
   }
+}
+
+.main-resturant-details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-resturant-details .card {
+  border-radius: 15px;
+  max-width: 80%;
+  width: 80%;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.main-resturant-details .card h2 {
+  font-size: 2rem;
+}
+.main-resturant-details .card * {
+  margin: 0.5rem 0px;
+}
+.ratingSec {
+  max-width: fit-content;
+}
+
+.Resturant-Info-shimmer-card-list .Resturant-Info-shimmer-card {
+  background-color: gray;
+  width: 90rem;
+  height: 35rem;
+  border-radius: 15px;
+  mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%) right/350% 100%;
+  -webkit-mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%) right/350%
+    100%;
+  background-repeat: no-repeat;
+  animation: shimmer 2.5s infinite;
+}
+.Resturant-Info-shimmer-card-list {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
 }

@@ -14,4 +14,12 @@ const ShimerCard = () => {
   );
 };
 
+export const ResturantinfoShimmer = () => {
+  return (
+    <div className="Resturant-Info-shimmer-card-list">
+      <div className="Resturant-Info-shimmer-card"></div>
+    </div>
+  );
+};
+
 export default ShimerCard;

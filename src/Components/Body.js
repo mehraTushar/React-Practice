@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 import ShimerCard from "./Shimmer";
+import {Link} from "react-router-dom"
 
 
 const filterArrList = [
@@ -83,7 +84,8 @@ const Body = () => {
             
             return;
           }
-          return <Card data={...restaurant.data.data} key={restaurant.data.data.id} />;
+          let resId = restaurant.data.data.id;
+          return <Link to={"/resturant/"+resId} key={resId} className="card"> <Card data={...restaurant.data.data}  /></Link>;
         })}
       </div>
     </>

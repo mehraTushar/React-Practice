@@ -3,8 +3,8 @@ import { imgUrl } from "../config";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 const Card = ({ data }) => {
   return (
-    <div className="card">
-      <div className="">
+    <>
+      <div>
         <img src={imgUrl + data?.cloudinaryImageId} alt="Resturant Image" />
       </div>
       <div className="resturant-details">
@@ -25,7 +25,7 @@ const Card = ({ data }) => {
           <span>{data?.costForTwoString}</span>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

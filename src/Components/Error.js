@@ -6,8 +6,8 @@ const Error = () => {
     <>
       <div id="main">
         <div className="fof">
-          <h1>Error: {err.status}</h1>
-          <h3>{err.error.message}</h3>
+          <h1>Error: {err?.status}</h1>
+          <h3>{err?.error?.message}</h3>
         </div>
       </div>
     </>
