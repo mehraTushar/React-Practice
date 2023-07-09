@@ -11,7 +11,13 @@ const Card = ({ data }) => {
         <h4>{data?.name}</h4>
         <p className="resturant-cuisines">{data?.cuisines.join(",")}</p>
         <div className="resturant-bottom-details">
-          <span className="resturant-rating">
+          <span
+            className={
+              data?.avgRating >= 4
+                ? "bg-green resturant-rating"
+                : "bg-orange resturant-rating"
+            }
+          >
             <FontAwesomeIcon icon={faStar} className="faStar" />
             <span>{data?.avgRating}</span>
           </span>

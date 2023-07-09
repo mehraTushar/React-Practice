@@ -125,7 +125,7 @@ body {
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
-  background-color: #48c479;
+  /* background-color: #48c479; */
   color: #fff;
   padding: 0.3rem 0.4rem;
 }
@@ -177,4 +177,10 @@ body {
   color: #fff;
   background: #ff5000;
   font-size: 16px;
+}
+.bg-green {
+  background-color: #48c479;
+}
+.bg-orange {
+  background-color: #ee9c00;
 }
