@@ -11,15 +11,15 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 const MainContainer = () => {
   return (
     <>
-      <section className="Navbar" key="Navbar">
+      <header className="Navbar" key="Navbar">
         <Navbar />
-      </section>
-      <section className="mainBody" key="mainBody">
+      </header>
+      <main className="mainBody" key="mainBody">
         <Outlet />
-      </section>
-      <section>
+      </main>
+      <footer>
         <Footer />
-      </section>
+      </footer>
     </>
   );
 };
@@ -41,5 +41,3 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.querySelector("#root")).render(
   <RouterProvider router={router} />
 );
-
-//https://www.themealdb.com/api/json/v1/1/random.php

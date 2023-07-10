@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBurger } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-const NavbarLinksArr = ["Home", "About", "Contact"];
+import { NavbarLinksArr } from "../config";
 
 const Navbar = () => {
   return (
@@ -23,10 +23,7 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-
-      {/* <FontAwesomeIcon icon={faUser} size="2xl" /> */}
     </>
   );
 };
-
 export default Navbar;

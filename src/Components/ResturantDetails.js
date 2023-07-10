@@ -1,21 +1,23 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { imgUrl } from "../config";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { ResturantMenuUrl } from "../config";
+import { imgUrl } from "../config";
 import { ResturantinfoShimmer } from "./Shimmer";
+import { useResturantById } from "../helper";
 const ResturantDetails = () => {
   const { id } = useParams();
   const [Resturant, setResturant] = useState("");
   useEffect(() => {
-    getResturantDetails(id, ResturantMenuUrl, setResturant);
+    const res = useResturantById(id);
+    res.then((data) => {
+      setResturant(data?.data?.cards[0]?.card?.card?.info);
+    });
   }, []);
   return Resturant === "" ? (
     <ResturantinfoShimmer />
   ) : (
     <>
-      {console.log(Resturant)}
       <section className="main-resturant-details ">
         <div className="card">
           <div>
@@ -25,7 +27,7 @@ const ResturantDetails = () => {
             />
           </div>
           <div className="resturant-header-details">
-            <h2>{Resturant.name}</h2>
+            <h2>{Resturant?.name}</h2>
             <p className="resturant-cuisines">
               {Resturant?.cuisines.join(",")}
             </p>
@@ -52,11 +54,5 @@ const ResturantDetails = () => {
     </>
   );
 };
-
-async function getResturantDetails(id, ResturantMenuUrl, setResturant) {
-  const res = await fetch(ResturantMenuUrl + id);
-  const data = await res.json();
-  setResturant(data?.data?.cards[0]?.card?.card?.info);
-}
 
 export default ResturantDetails;

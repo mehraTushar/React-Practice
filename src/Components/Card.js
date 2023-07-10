@@ -5,7 +5,12 @@ const Card = ({ data }) => {
   return (
     <>
       <div>
-        <img src={imgUrl + data?.cloudinaryImageId} alt="Resturant Image" />
+        <img
+          src={imgUrl + data?.cloudinaryImageId}
+          alt="Resturant Image"
+          //implement onImage Error
+          //onError=""
+        />
       </div>
       <div className="resturant-details">
         <h4>{data?.name}</h4>
@@ -28,5 +33,4 @@ const Card = ({ data }) => {
     </>
   );
 };
-
 export default Card;
