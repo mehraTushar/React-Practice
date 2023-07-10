@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   margin: 0px;
   padding: 0px;
@@ -175,7 +177,7 @@ body {
   all: unset;
   cursor: pointer;
 }
-.uppperBody .filterCardSec {
+.uppperBody .filterSec {
   margin: 0px 3rem 0px 0px;
 }
 
