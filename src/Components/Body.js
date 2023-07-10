@@ -61,7 +61,6 @@ const Body = () => {
       ); //https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&offset=1
       const data = await res.json();
       if (data != "") {
-        // console.log(data.data.cards[3].data.data.name);
         setRestaurantList(data.data.cards);
         setFilterRestaurantList(data.data.cards);
       }

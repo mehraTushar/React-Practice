@@ -156,10 +156,19 @@ body {
 }
 .navbarLinks a,
 .mainHeading a,
-.foodCardList a {
+.foodCardList a,
+.BackToHome {
   all: unset;
   cursor: pointer;
   font-weight: 600;
+}
+
+.BackToHome {
+  all: unset;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 3;
+  font-size: 1.5rem;
 }
 
 .foodCardList a {
