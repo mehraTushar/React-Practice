@@ -2,6 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+
 * {
   margin: 0px;
   padding: 0px;
@@ -60,7 +63,7 @@ body {
 .card .resturant-bottom-details {
   margin: 0.5rem 0px;
 } */
-
+/*
 .foodCardList > .card:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.3);
 }
@@ -81,7 +84,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
   white-space: pre-line;
@@ -89,7 +92,6 @@ body {
 
 .foodCardList > .card > div > h4 {
   font-size: 1.2rem;
-  /* text-transform: uppercase; */
   margin: 0.5rem 0px;
 }
 
@@ -130,7 +132,6 @@ body {
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
-  /* background-color: #48c479; */
   color: #fff;
   padding: 0.3rem 0.4rem;
 }
@@ -191,7 +192,6 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* flex: 1; */
   width: 44%;
 }
 .SearchCardSec button {
@@ -299,4 +299,9 @@ body {
   flex-direction: column;
   align-items: center;
   display: flex;
+}
+*/
+
+body {
+  background-color: #faf7f0;
 }

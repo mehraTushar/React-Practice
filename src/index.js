@@ -11,7 +11,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 const MainContainer = () => {
   return (
     <>
-      <header className="Navbar" key="Navbar">
+      <header>
         <Navbar />
       </header>
       <main className="mainBody" key="mainBody">

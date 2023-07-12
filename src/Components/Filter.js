@@ -3,7 +3,7 @@ const Filter = () => {
   return (
     <>
       <div className="filterSec">
-        <ul>
+        <ul className="flex items-center  gap-4 ">
           {filterArrList?.map((filter, index) => {
             return (
               <li key={index} className="not-Developed">

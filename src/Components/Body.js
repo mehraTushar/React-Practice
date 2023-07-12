@@ -31,7 +31,7 @@ const Body = () => {
   return filterRestaurantList.length == 0 ? (
     //refactor this if you know how to
     <div>
-      <section className="uppperBody">
+      <section className="uppperBody mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <Search {...searchProps} />
         <Filter />
       </section>
@@ -39,7 +39,7 @@ const Body = () => {
     </div>
   ) : (
     <>
-      <section className="uppperBody">
+      <section className="uppperBody mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <Search {...searchProps} />
         <Filter />
       </section>
