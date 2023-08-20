@@ -10,9 +10,11 @@ const Search = ({ Text, RestaurantList, SetText, SetFilterRestaurantList }) => {
         value={Text}
         onChange={(e) => {
           SetText(e.target.value);
+          const res = useFilterCard(e.target.value, RestaurantList);
+          SetFilterRestaurantList(res);
         }}
       />
-      <span>
+      {/* <span>
         <button
           className="rounded-lg px-4 mx-2 py-2 bg-purple-500 text-white hover:bg-purple-600 duration-300"
           onClick={() => {
@@ -22,7 +24,7 @@ const Search = ({ Text, RestaurantList, SetText, SetFilterRestaurantList }) => {
         >
           Search
         </button>
-      </span>
+      </span> */}
     </div>
   );
 };

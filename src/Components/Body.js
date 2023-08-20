@@ -13,8 +13,8 @@ const Body = () => {
   useEffect(() => {
     const data = useResturant();
     data.then((res) => {
-      setRestaurantList(res?.data?.cards);
-      setFilterRestaurantList(res?.data?.cards);
+      setRestaurantList(res);
+      setFilterRestaurantList(res);
     });
   }, []);
 
@@ -27,23 +27,24 @@ const Body = () => {
     RestaurantList: restaurantList,
     SetFilterRestaurantList: setFilterRestaurantList,
   };
-
-  return filterRestaurantList.length == 0 ? (
-    //refactor this if you know how to
-    <div>
-      <section className="uppperBody mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
-        <Search {...searchProps} />
-        <Filter />
-      </section>
-      <div className="NoMatchFound">Sorry No Match Found 😢</div>
-    </div>
-  ) : (
+  // return <ShimerCard />;
+  return (
     <>
-      <section className="uppperBody mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+      <section className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <Search {...searchProps} />
-        <Filter />
+        <Filter
+          filterList={filterRestaurantList}
+          setFilterList={setFilterRestaurantList}
+          restaurantList={restaurantList}
+        />
       </section>
-      <FilterCards FilterResList={filterRestaurantList} />
+      {filterRestaurantList.length === 0 ? (
+        <div className="mx-auto max-w-7xl p-6 lg:px-7 font-bold text-xl">
+          Sorry No Match Found 😢
+        </div>
+      ) : (
+        <FilterCards FilterResList={filterRestaurantList} />
+      )}
     </>
   );
 };

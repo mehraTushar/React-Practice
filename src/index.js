@@ -10,17 +10,17 @@ import ResturantDetails from "./Components/ResturantDetails";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 const MainContainer = () => {
   return (
-    <>
+    <React.StrictMode>
       <header>
         <Navbar />
       </header>
-      <main className="mainBody" key="mainBody">
+      <main>
         <Outlet />
       </main>
       <footer>
         <Footer />
       </footer>
-    </>
+    </React.StrictMode>
   );
 };
 

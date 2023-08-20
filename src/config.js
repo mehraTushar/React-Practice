@@ -5,13 +5,16 @@ export const ResturantMenuUrl =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&lat=30.7046486&lng=76.71787259999999&restaurantId=";
 
 export const filterArrList = [
-  "Delivery TIme",
+  "Delivery Time",
   "Rating",
-  "Cost: Low TO High",
-  "Cost: High TO Low",
+  "Low To High",
+  "High To Low",
 ];
 
 export const ResturantDetailsUrl =
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&offset=1";
+  // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&offset=1";
+  "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&page_type=DESKTOP_WEB_LISTING";
 
 export const NavbarLinksArr = ["Home", "About", "Contact"];
+
+export const GitRepoPath = "https://github.com/mehraTushar/React-Practice";

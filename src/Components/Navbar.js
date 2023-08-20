@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBurger } from "@fortawesome/free-solid-svg-icons";
+import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import { NavbarLinksArr } from "../config";
 
@@ -9,19 +8,15 @@ const Navbar = () => {
       className="Navbar mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       key="Navbar"
     >
-      <div>
-        <Link
-          to={"/"}
-          className="flex mx-auto  items-center justify-between gap-2 text-2xl"
-        >
-          <h1 className="mainHeading">HungryHub</h1>
-          <FontAwesomeIcon icon={faBurger} size="lg" />
-        </Link>
-      </div>
+      <Logo />
       <div>
         <ul className="navbarLinks flex gap-4">
           {NavbarLinksArr.map((e, i) => (
-            <Link to={e === "Home" ? "" : e.toLowerCase()} key={i}>
+            <Link
+              to={e === "Home" ? "" : e.toLowerCase()}
+              key={i}
+              className="font-semibold"
+            >
               {e}
             </Link>
           ))}
