@@ -5,13 +5,20 @@ const Error = () => {
   const err = useRouteError();
   return (
     <>
-      <div id="main">
+      <div
+        id="main"
+        className="h-[calc(100vh-150px)] flex justify-center items-center"
+      >
         <div className="fof">
-          <h1>Error: {err?.status}</h1>
-          <h3>{err?.error?.message}</h3>
-          <Link to={"/"} className="BackToHome">
-            Back To Home
-          </Link>
+          <h1 className=" text-2xl text-center text-red-600 font-bold">
+            Error: {err?.status}
+          </h1>
+          <h3 className=" text-xl text-center  text-red-600 font-bold">
+            {err?.error?.message}
+          </h3>
+          <div className="text-center font-bold underline">
+            <Link to={"/"}>Back To Home</Link>
+          </div>
         </div>
       </div>
     </>
