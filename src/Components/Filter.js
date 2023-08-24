@@ -10,7 +10,6 @@ const Filter = ({ filterList, setFilterList, restaurantList }) => {
     } else {
       SetActiveFilter([...ActiveFilter, CurrFilter]);
     }
-    // console.log(ActiveFilter);
   }
 
   function filterAndSortRestaurants(filterList, setFilterList) {
@@ -28,7 +27,27 @@ const Filter = ({ filterList, setFilterList, restaurantList }) => {
         return a.info.avgRating - b.info.avgRating;
       })
       .reverse();
-    console.log(sortRestaurants);
+    setFilterList(sortRestaurants);
+  }
+
+  function filterAndSortRestLowToHigh(filterList, setFilterList) {
+    const sortRestaurants = [...filterList];
+    sortRestaurants.sort((a, b) => {
+      return a.info.costForTwo.match(/\d+/g) - b.info.costForTwo.match(/\d+/g);
+    });
+    setFilterList(sortRestaurants);
+  }
+
+  function filterAndSortRestHighToLow(filterList, setFilterList) {
+    const sortRestaurants = [...filterList];
+
+    sortRestaurants
+      .sort((a, b) => {
+        return (
+          a.info.costForTwo.match(/\d+/g) - b.info.costForTwo.match(/\d+/g)
+        );
+      })
+      .reverse();
     setFilterList(sortRestaurants);
   }
 
@@ -45,7 +64,12 @@ const Filter = ({ filterList, setFilterList, restaurantList }) => {
         case "Rating":
           filterAndSortRestRating(filterList, setFilterList);
           break;
-
+        case "Low To High":
+          filterAndSortRestLowToHigh(filterList, setFilterList);
+          break;
+        case "High To Low":
+          filterAndSortRestHighToLow(filterList, setFilterList);
+          break;
         default:
           break;
       }
