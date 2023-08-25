@@ -14,12 +14,18 @@ function MenuItem({ Item }) {
         </p>
         <p className=" max-w-3xl text-gray-500">{Item.description}</p>
       </div>
-      <div className=" w-1/6">
+      <div className=" w-1/6 relative">
         <img
           src={imgUrl + Item.imageId}
           loading="lazy"
           className=" rounded"
         ></img>
+        <button
+          type="button"
+          className=" bg-slate-50 text-green-500 py-2 px-8 absolute -bottom-2 border border-gray-400 left-16 font-bold rounded cursor-not-allowed"
+        >
+          ADD
+        </button>
       </div>
     </div>
   );

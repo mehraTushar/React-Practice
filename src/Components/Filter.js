@@ -83,8 +83,8 @@ const Filter = ({ filterList, setFilterList, restaurantList }) => {
 
   return (
     <>
-      <div className="filterSec flex justify-evenly items-center gap-10">
-        <ul className="flex items-center gap-10 ">
+      <div className="filterSec flex justify-evenly items-center gap-1">
+        <ul className="flex items-center gap-1">
           {filters.map((curr, i) => {
             return (
               <ListItem

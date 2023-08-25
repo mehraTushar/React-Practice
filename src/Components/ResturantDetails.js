@@ -12,10 +12,14 @@ import { ResturantinfoShimmer } from "./Shimmer";
 import { useResturantById } from "../helper";
 import { Link } from "react-router-dom";
 import MenuItem from "./MenuItem";
+import { ExpandSearchBar } from "./Search";
 const ResturantDetails = () => {
   const { id } = useParams();
   const [Menu, setMenu] = useState("");
+  const [FilterMenu, setFilterMenu] = useState("");
   const [Resturant, setResturant] = useState("");
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [searchMenu, setSearchMenu] = useState("");
   useEffect(() => {
     const res = useResturantById(id);
     res.then((json) => {
@@ -23,11 +27,20 @@ const ResturantDetails = () => {
         json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
           ?.card?.itemCards;
       setMenu(res);
+      console.log(json?.data?.cards);
+      setFilterMenu(res);
       setResturant(json?.data?.cards[0]?.card?.card?.info);
     });
   }, []);
   // return <ResturantinfoShimmer />;
-  return Menu === "" ? (
+
+  const searchMenuProps = {
+    searchMenu: searchMenu,
+    setSearchMenu: setSearchMenu,
+    Menu: Menu,
+    setFilterMenu: setFilterMenu,
+  };
+  return FilterMenu === "" ? (
     <ResturantinfoShimmer />
   ) : (
     <>
@@ -104,7 +117,13 @@ const ResturantDetails = () => {
             </nav>
           </div>
           <div>
-            <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+            {isSearchActive ? (
+              <ExpandSearchBar {...searchMenuProps}></ExpandSearchBar>
+            ) : (
+              <span onClick={() => setIsSearchActive(true)}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+              </span>
+            )}
           </div>
         </div>
         <div className=" flex justify-between items-center w-auto pt-8">
@@ -153,24 +172,30 @@ const ResturantDetails = () => {
                 className="border-black"
               />
             </span>
+
             <span>{Resturant.costForTwoMessage}</span>
           </div>
         </div>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <div className="pt-8">
           <div>
-            {Menu.map((menuItem) => {
-              return (
-                <>
-                  {console.log(menuItem.card.info.id)}
-                  <MenuItem
-                    Item={menuItem.card.info}
-                    key={menuItem.card.info.id}
-                  ></MenuItem>
-                  <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-                </>
-              );
-            })}
+            {FilterMenu.length === 0 ? (
+              <div className="mx-auto max-w-7xl p-6 lg:px-7 font-bold text-xl">
+                Sorry No Match Found 😢
+              </div>
+            ) : (
+              FilterMenu.map((menuItem) => {
+                return (
+                  <>
+                    <MenuItem
+                      Item={menuItem.card.info}
+                      key={menuItem.card.info.id}
+                    ></MenuItem>
+                    <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                  </>
+                );
+              })
+            )}
           </div>
         </div>
       </section>

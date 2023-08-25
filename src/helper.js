@@ -24,6 +24,14 @@ export async function useResturant() {
   } catch (ex) {}
 }
 
+export async function useResturantById(id) {
+  try {
+    const res = await fetch(ResturantMenuUrl + id);
+    const data = await res.json();
+    return data;
+  } catch (ex) {}
+}
+
 export const useFilterCard = (searchTest, restaurantList) => {
   const res = restaurantList.filter((meal) => {
     return searchTest.toLowerCase() === ""
@@ -32,10 +40,12 @@ export const useFilterCard = (searchTest, restaurantList) => {
   });
   return res;
 };
-export async function useResturantById(id) {
-  try {
-    const res = await fetch(ResturantMenuUrl + id);
-    const data = await res.json();
-    return data;
-  } catch (ex) {}
-}
+
+export const useFilterMenuList = (searchTest, menuList) => {
+  const res = menuList.filter((meal) => {
+    return searchTest.toLowerCase() === ""
+      ? meal
+      : meal?.card?.info?.name?.toLowerCase()?.includes(searchTest);
+  });
+  return res;
+};
