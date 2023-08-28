@@ -6,6 +6,7 @@ const Logo = () => {
     <>
       <div>
         <Link
+          key="logoLink"
           to={"/"}
           className="flex mx-auto  items-center justify-between gap-2 text-2xl"
         >

@@ -11,15 +11,17 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 const MainContainer = () => {
   return (
     <React.StrictMode>
-      <header>
-        <Navbar />
-      </header>
-      <main>
-        <Outlet />
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+      <div className="flex flex-col h-screen">
+        <header>
+          <Navbar />
+        </header>
+        <main className="relative flex-grow">
+          <Outlet />
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </React.StrictMode>
   );
 };

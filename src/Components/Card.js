@@ -6,6 +6,7 @@ const Card = ({ data }) => {
     <>
       <div className="rounded overflow-hidden h-full relative">
         <img
+          onError={(i) => (i.target.style.display = "none")}
           loading="lazy"
           className="w-full"
           src={imgUrl + data?.cloudinaryImageId}

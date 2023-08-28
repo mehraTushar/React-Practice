@@ -13,6 +13,7 @@ import { useResturantById } from "../helper";
 import { Link } from "react-router-dom";
 import MenuItem from "./MenuItem";
 import { ExpandSearchBar } from "./Search";
+import NoMatch from "./NoMatch";
 const ResturantDetails = () => {
   const { id } = useParams();
   const [Menu, setMenu] = useState("");
@@ -27,7 +28,6 @@ const ResturantDetails = () => {
         json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
           ?.card?.itemCards;
       setMenu(res);
-      console.log(json?.data?.cards);
       setFilterMenu(res);
       setResturant(json?.data?.cards[0]?.card?.card?.info);
     });
@@ -39,6 +39,7 @@ const ResturantDetails = () => {
     setSearchMenu: setSearchMenu,
     Menu: Menu,
     setFilterMenu: setFilterMenu,
+    setIsSearchActive: setIsSearchActive,
   };
   return FilterMenu === "" ? (
     <ResturantinfoShimmer />
@@ -116,7 +117,7 @@ const ResturantDetails = () => {
               </ol>
             </nav>
           </div>
-          <div>
+          <div className=" relative">
             {isSearchActive ? (
               <ExpandSearchBar {...searchMenuProps}></ExpandSearchBar>
             ) : (
@@ -180,9 +181,7 @@ const ResturantDetails = () => {
         <div className="pt-8">
           <div>
             {FilterMenu.length === 0 ? (
-              <div className="mx-auto max-w-7xl p-6 lg:px-7 font-bold text-xl">
-                Sorry No Match Found 😢
-              </div>
+              <NoMatch></NoMatch>
             ) : (
               FilterMenu.map((menuItem) => {
                 return (

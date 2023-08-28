@@ -49,3 +49,29 @@ export const useFilterMenuList = (searchTest, menuList) => {
   });
   return res;
 };
+
+// export function useGetLocation() {
+//   const [location, setLocation] = useState(null);
+
+//   function successFunction(position) {
+//     var lat = position.coords.latitude;
+//     var long = position.coords.longitude;
+//     setLocation([lat, long]);
+//   }
+
+//   function errorFunction() {
+//     alert("Please Allow Your Location Access");
+//   }
+
+//   useEffect(() => {
+//     if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+//     } else {
+//       alert(
+//         "It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it."
+//       );
+//     }
+//   }, []); // The empty dependency array ensures the effect runs only once
+
+//   return location;
+// }

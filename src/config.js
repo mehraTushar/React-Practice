@@ -1,3 +1,5 @@
+import { useGetLocation } from "./helper";
+
 export const imgUrl =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
@@ -13,8 +15,17 @@ export const filterArrList = [
 
 export const ResturantDetailsUrl =
   // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&offset=1";
-  "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&page_type=DESKTOP_WEB_LISTING";
+  `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&page_type=DESKTOP_WEB_LISTING`;
 
-export const NavbarLinksArr = ["Home", "About", "Contact"];
+export const NavbarLinksArr = ["Home", "About", "Contact", "Cart"];
 
 export const GitRepoPath = "https://github.com/mehraTushar/React-Practice";
+
+// export function CurrLocationUrl() {
+//   const location = useGetLocation();
+//   if (location == null) {
+//     return null;
+//   }
+//   const [lat, long] = location;
+//   return `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${long}&page_type=DESKTOP_WEB_LISTING`;
+// }

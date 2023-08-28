@@ -4,11 +4,12 @@ import { useResturant } from "../helper";
 import Filter from "./Filter";
 import Search from "./Search";
 import FilterCards from "./FilterCard";
+import NoMatch from "./NoMatch";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [restaurantList, setRestaurantList] = useState("");
-  const [filterRestaurantList, setFilterRestaurantList] = useState("");
+  const [restaurantList, setRestaurantList] = useState([]);
+  const [filterRestaurantList, setFilterRestaurantList] = useState([]);
 
   useEffect(() => {
     const data = useResturant();
@@ -39,9 +40,7 @@ const Body = () => {
         />
       </section>
       {filterRestaurantList.length === 0 ? (
-        <div className="mx-auto max-w-7xl p-6 lg:px-7 font-bold text-xl">
-          Sorry No Match Found 😢
-        </div>
+        <NoMatch></NoMatch>
       ) : (
         <FilterCards FilterResList={filterRestaurantList} />
       )}
