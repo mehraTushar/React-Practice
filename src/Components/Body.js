@@ -19,7 +19,7 @@ const Body = () => {
     });
   }, []);
 
-  if (restaurantList.length === 0) {
+  if (restaurantList?.length === 0) {
     return <ShimerCard />;
   }
   const searchProps = {
@@ -39,7 +39,7 @@ const Body = () => {
           restaurantList={restaurantList}
         />
       </section>
-      {filterRestaurantList.length === 0 ? (
+      {filterRestaurantList?.length === 0 ? (
         <NoMatch></NoMatch>
       ) : (
         <FilterCards FilterResList={filterRestaurantList} />
