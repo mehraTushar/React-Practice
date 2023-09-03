@@ -1,4 +1,4 @@
-import { useFilterCard, useFilterMenuList } from "../helper";
+import { useFilterList } from "../helper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 const Search = ({ Text, RestaurantList, SetText, SetFilterRestaurantList }) => {
@@ -11,7 +11,7 @@ const Search = ({ Text, RestaurantList, SetText, SetFilterRestaurantList }) => {
         value={Text}
         onChange={(e) => {
           SetText(e.target.value);
-          const res = useFilterCard(e.target.value, RestaurantList);
+          const res = useFilterList(e.target.value, RestaurantList);
           SetFilterRestaurantList(res);
         }}
       />
@@ -35,7 +35,7 @@ export const ExpandSearchBar = ({
         value={searchMenu}
         onChange={(e) => {
           setSearchMenu(e.target.value);
-          const res = useFilterMenuList(e.target.value, Menu);
+          const res = useFilterList(e.target.value, Menu);
           setFilterMenu(res);
         }}
         // onClick={() => setIsSearchActive(false)}

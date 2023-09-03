@@ -32,7 +32,7 @@ export async function useResturantById(id) {
   } catch (ex) {}
 }
 
-export const useFilterCard = (searchTest, restaurantList) => {
+export const useFilterList = (searchTest, restaurantList) => {
   const res = restaurantList.filter((meal) => {
     return searchTest.toLowerCase() === ""
       ? meal
@@ -40,16 +40,6 @@ export const useFilterCard = (searchTest, restaurantList) => {
   });
   return res;
 };
-
-export const useFilterMenuList = (searchTest, menuList) => {
-  const res = menuList.filter((meal) => {
-    return searchTest.toLowerCase() === ""
-      ? meal
-      : meal?.card?.info?.name?.toLowerCase()?.includes(searchTest);
-  });
-  return res;
-};
-
 // export function useGetLocation() {
 //   const [location, setLocation] = useState(null);
 

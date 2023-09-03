@@ -8,20 +8,24 @@ import About from "./Components/About";
 import Contact from "./Components/Contact";
 import ResturantDetails from "./Components/ResturantDetails";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./Store";
 const MainContainer = () => {
   return (
     <React.StrictMode>
-      <div className="flex flex-col h-screen">
-        <header>
-          <Navbar />
-        </header>
-        <main className="relative flex-grow">
-          <Outlet />
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
+      <Provider store={store}>
+        <div className="flex flex-col h-screen">
+          <header>
+            <Navbar />
+          </header>
+          <main className="relative flex-grow">
+            <Outlet />
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </div>
+      </Provider>
     </React.StrictMode>
   );
 };
