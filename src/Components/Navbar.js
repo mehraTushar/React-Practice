@@ -1,8 +1,6 @@
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import { NavbarLinksArr } from "../config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {

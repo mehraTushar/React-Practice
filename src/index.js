@@ -10,6 +10,7 @@ import ResturantDetails from "./Components/ResturantDetails";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./Store";
+import Cart from "./Components/Cart";
 const MainContainer = () => {
   return (
     <React.StrictMode>
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Body /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/cart", element: <Cart /> },
       { path: "/resturant/:id", element: <ResturantDetails /> },
     ],
   },

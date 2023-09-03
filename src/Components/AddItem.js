@@ -3,12 +3,12 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../Features/Cart/CartSlice";
-const AddItem = ({ setIsaddActive }) => {
+const AddItem = ({ setIsaddActive, className }) => {
   const dispatch = useDispatch();
   const [ItemCount, SetItemCount] = useState(1);
   return (
-    <div className="bg-slate-50 text-green-500 flex gap-5 justify-evenly py-2 px-4 absolute -bottom-2 border border-gray-400 left-14 font-bold rounded">
-      <button className="">
+    <div className={className}>
+      <button>
         <FontAwesomeIcon
           icon={faMinus}
           onClick={() => {
