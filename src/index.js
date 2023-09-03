@@ -6,7 +6,7 @@ import Footer from "./Components/Footer";
 import Error from "./Components/Error";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
-import ResturantDetails from "./Components/ResturantDetails";
+import ResturantMenu from "./Components/ResturantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./Store";
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/cart", element: <Cart /> },
-      { path: "/resturant/:id", element: <ResturantDetails /> },
+      { path: "/resturant/:id", element: <ResturantMenu /> },
     ],
   },
 ]);

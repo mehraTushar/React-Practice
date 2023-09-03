@@ -17,4 +17,4 @@ export const ResturantDetailsUrl =
 
 export const NavbarLinksArr = ["Home", "About", "Contact", "Cart"];
 
-export const GitRepoPath = "https://github.com/mehraTushar/React-Practice";
+export const GitRepoPath = "https://github.com/mehraTushar/HungryHub";

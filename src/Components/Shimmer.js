@@ -24,7 +24,7 @@ const ShimerCard = () => {
   );
 };
 
-export const ResturantinfoShimmer = () => {
+export const ResturantMenuShimmer = () => {
   return (
     <div className="rounded-md  mx-auto max-w-7xl  p-6 lg:px-8">
       <div className="rounded bg-gray-400 h-60 animate-pulse"></div>

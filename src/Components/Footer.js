@@ -6,9 +6,6 @@ const Footer = () => {
   return (
     <>
       <footer className="mx-auto max-w-7xl lg:px-7 flex justify-between items-center py-3">
-        {/* <section>
-          <Logo />
-        </section> */}
         <section>&copy; {new Date().getFullYear()} Hungry Hub</section>
         <section>Made With 💕 By Tushar Mehra</section>
         <section>

@@ -32,7 +32,7 @@ export async function useResturantById(id) {
   } catch (ex) {}
 }
 
-export const useFilterList = (searchTest, restaurantList) => {
+export const useFilterCard = (searchTest, restaurantList) => {
   const res = restaurantList.filter((meal) => {
     return searchTest.toLowerCase() === ""
       ? meal
@@ -40,28 +40,12 @@ export const useFilterList = (searchTest, restaurantList) => {
   });
   return res;
 };
-// export function useGetLocation() {
-//   const [location, setLocation] = useState(null);
 
-//   function successFunction(position) {
-//     var lat = position.coords.latitude;
-//     var long = position.coords.longitude;
-//     setLocation([lat, long]);
-//   }
-
-//   function errorFunction() {
-//     alert("Please Allow Your Location Access");
-//   }
-
-//   useEffect(() => {
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-//     } else {
-//       alert(
-//         "It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it."
-//       );
-//     }
-//   }, []); // The empty dependency array ensures the effect runs only once
-
-//   return location;
-// }
+export const useFilterMenuList = (searchTest, menuList) => {
+  const res = menuList.filter((meal) => {
+    return searchTest.toLowerCase() === ""
+      ? meal
+      : meal?.card?.info?.name?.toLowerCase()?.includes(searchTest);
+  });
+  return res;
+};
