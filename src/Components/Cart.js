@@ -5,6 +5,7 @@ import {
   faCircleUser,
   faLocationDot,
   faWallet,
+  faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 const Cart = () => {
   {
@@ -22,11 +23,18 @@ const Cart = () => {
               size="3x"
               className=" absolute top-10 -left-8 "
             />
-            <div class="absolute top-20 w-0.5 h-full -left-2 bg-black"></div>
+            <div className="absolute top-20 w-0.5 h-full -left-2 bg-black"></div>
           </div>
         </div>
         <div className=" flex flex-col gap-4 shadow-xl p-8 relative">
-          <div className=" text-xl font-semibold">Delivery address ✅</div>
+          <div className=" text-xl font-semibold">
+            Delivery address{" "}
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              size="1x"
+              className=" text-green-500"
+            />
+          </div>
           <div className=" text-xl font-semibold">Home</div>
           <div className=" text-xl font-semibold">
             Acme heights Ext 2 Sector 117
@@ -37,7 +45,7 @@ const Cart = () => {
               size="3x"
               className=" absolute top-10 -left-6 "
             />
-            <div class="absolute top-20 w-0.5 h-full -left-2 bg-black"></div>
+            <div className="absolute top-20 w-0.5 h-full -left-2 bg-black"></div>
           </div>
         </div>
         <div className=" flex flex-col gap-4 shadow-xl p-8 relative">

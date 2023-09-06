@@ -4,7 +4,11 @@ import { NavbarLinksArr } from "../config";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const count = useSelector((state) => state.cart.value);
+  const count = useSelector((state) =>
+    state.cart.cartItems?.reduce((acc, currVal) => {
+      return acc + currVal.Quantity;
+    }, 0)
+  );
   return (
     <nav
       className="Navbar mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"

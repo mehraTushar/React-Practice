@@ -3,7 +3,7 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../Features/Cart/CartSlice";
-const AddItem = ({ setIsaddActive, className }) => {
+const AddItem = ({ setIsaddActive, className, item }) => {
   const dispatch = useDispatch();
   const [ItemCount, SetItemCount] = useState(1);
   return (
@@ -15,7 +15,7 @@ const AddItem = ({ setIsaddActive, className }) => {
             ItemCount > 1
               ? SetItemCount((cnt) => cnt - 1)
               : setIsaddActive(false);
-            dispatch(removeItem());
+            dispatch(removeItem(item));
           }}
         />
       </button>
@@ -25,7 +25,7 @@ const AddItem = ({ setIsaddActive, className }) => {
           icon={faPlus}
           onClick={() => {
             SetItemCount((cnt) => cnt + 1);
-            dispatch(addItem());
+            dispatch(addItem(item));
           }}
         />
       </button>
