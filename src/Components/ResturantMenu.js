@@ -8,13 +8,13 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { ResturantinfoShimmer } from "./Shimmer";
+import { ResturantMenuShimmer } from "./Shimmer";
 import { useResturantById } from "../helper";
-import { Link } from "react-router-dom";
+import BreadCrumb from "./Breadcrumb";
 import MenuItem from "./MenuItem";
 import { ExpandSearchBar } from "./Search";
 import NoMatch from "./NoMatch";
-const ResturantDetails = () => {
+const ResturantMenu = () => {
   const { id } = useParams();
   const [Menu, setMenu] = useState("");
   const [FilterMenu, setFilterMenu] = useState("");
@@ -42,94 +42,31 @@ const ResturantDetails = () => {
     setIsSearchActive: setIsSearchActive,
   };
   return FilterMenu === "" ? (
-    <ResturantinfoShimmer />
+    <ResturantMenuShimmer />
   ) : (
     <>
       <section className="mx-auto max-w-7xl  p-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div>
-            <nav className="flex" aria-label="Breadcrumb">
-              <ol className="inline-flex items-center space-x-1 md:space-x-3">
-                <li className="inline-flex items-center">
-                  <Link
-                    to={"/"}
-                    className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-400"
-                  >
-                    <svg
-                      className="w-3 h-3 mr-2.5"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                    </svg>
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <div className="flex items-center">
-                    <svg
-                      className="w-3 h-3 text-gray-400 mx-1"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
-                    <span
-                      href="#"
-                      className="ml-1 text-sm font-medium text-gray-700 md:ml-2 dark:text-gray-400"
-                    >
-                      {Resturant.city}
-                    </span>
-                  </div>
-                </li>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <svg
-                      className="w-3 h-3 text-gray-400 mx-1"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
-                    <span className="ml-1 text-sm font-medium text-gray-700 md:ml-2 dark:text-gray-700">
-                      {Resturant.name}
-                    </span>
-                  </div>
-                </li>
-              </ol>
-            </nav>
+            <BreadCrumb Resturant={Resturant}></BreadCrumb>
           </div>
           <div className=" relative">
             {isSearchActive ? (
               <ExpandSearchBar {...searchMenuProps}></ExpandSearchBar>
             ) : (
               <span onClick={() => setIsSearchActive(true)}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+                <FontAwesomeIcon
+                  key="menuSearch"
+                  icon={faMagnifyingGlass}
+                  size="xl"
+                  className="cursor-pointer"
+                />
               </span>
             )}
           </div>
         </div>
         <div className=" flex justify-between items-center w-auto pt-8">
           <div>
-            {/* {console.log(Resturant)} */}
             <h2 className="font-bold text-xl">{Resturant.name}</h2>
             <p>
               {Resturant?.cuisines.map((cuisine, index) => (
@@ -150,7 +87,7 @@ const ResturantDetails = () => {
               }
             >
               <span>
-                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} key="faStar" />
               </span>
               <span>{Resturant.avgRating}</span>
             </span>
@@ -160,7 +97,7 @@ const ResturantDetails = () => {
         <div className=" flex justify-start gap-4 pt-8 items-center">
           <div className="font-bold flex gap-2 items-center justify-center">
             <span>
-              <FontAwesomeIcon icon={faClock} size="lg" />
+              <FontAwesomeIcon icon={faClock} size="lg" key="faClock" />
             </span>
             <span>24 mins</span>
           </div>
@@ -170,6 +107,7 @@ const ResturantDetails = () => {
                 size="lg"
                 icon={faIndianRupeeSign}
                 border
+                key="faIndianRupeeSign"
                 className="border-black"
               />
             </span>
@@ -202,4 +140,4 @@ const ResturantDetails = () => {
   );
 };
 
-export default ResturantDetails;
+export default ResturantMenu;

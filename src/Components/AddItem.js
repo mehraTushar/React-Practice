@@ -1,26 +1,32 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-
-const AddItem = ({ setIsaddActive }) => {
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../Features/Cart/CartSlice";
+const AddItem = ({ setIsaddActive, className, item }) => {
+  const dispatch = useDispatch();
   const [ItemCount, SetItemCount] = useState(1);
   return (
-    <div className="bg-slate-50 text-green-500 flex gap-5 justify-evenly py-2 px-4 absolute -bottom-2 border border-gray-400 left-14 font-bold rounded">
-      <button className="">
+    <div className={className}>
+      <button>
         <FontAwesomeIcon
           icon={faMinus}
-          onClick={() =>
+          onClick={() => {
             ItemCount > 1
               ? SetItemCount((cnt) => cnt - 1)
-              : setIsaddActive(false)
-          }
+              : setIsaddActive(false);
+            dispatch(removeItem(item));
+          }}
         />
       </button>
       <span>{ItemCount}</span>
       <button>
         <FontAwesomeIcon
           icon={faPlus}
-          onClick={() => SetItemCount((cnt) => cnt + 1)}
+          onClick={() => {
+            SetItemCount((cnt) => cnt + 1);
+            dispatch(addItem(item));
+          }}
         />
       </button>
     </div>

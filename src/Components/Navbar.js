@@ -1,10 +1,14 @@
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import { NavbarLinksArr } from "../config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const count = useSelector((state) =>
+    state.cart.cartItems?.reduce((acc, currVal) => {
+      return acc + currVal.Quantity;
+    }, 0)
+  );
   return (
     <nav
       className="Navbar mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
@@ -32,8 +36,13 @@ const Navbar = () => {
                     fill="#686b78"
                   >
                     <path d="M4.438 0l-2.598 5.11-1.84 26.124h34.909l-1.906-26.124-2.597-5.11z"></path>
-                    <text x="12" y="23" fontSize="20">
-                      0
+                    <text
+                      x={count <= 9 ? "12" : "08"}
+                      y="23"
+                      fill="black"
+                      fontSize="20"
+                    >
+                      {count}
                     </text>
                   </svg>
                 </Link>

@@ -11,11 +11,7 @@ const Logo = () => {
           className="flex mx-auto  items-center justify-between gap-2 text-2xl"
         >
           <h1 className="mainHeading font-bold">Hungry Hub</h1>
-          <FontAwesomeIcon
-            icon={faBurger}
-            size="lg"
-            // className="text-purple-500"
-          />
+          <FontAwesomeIcon icon={faBurger} size="lg" />
         </Link>
       </div>
     </>

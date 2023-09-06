@@ -11,7 +11,7 @@ const Search = ({ Text, RestaurantList, SetText, SetFilterRestaurantList }) => {
         value={Text}
         onChange={(e) => {
           SetText(e.target.value);
-          const res = useFilterCard(e.target.value, RestaurantList);
+          const res = useFilterCard(e.target.value.trim(), RestaurantList);
           SetFilterRestaurantList(res);
         }}
       />
@@ -35,7 +35,7 @@ export const ExpandSearchBar = ({
         value={searchMenu}
         onChange={(e) => {
           setSearchMenu(e.target.value);
-          const res = useFilterMenuList(e.target.value, Menu);
+          const res = useFilterMenuList(e.target.value.trim(), Menu);
           setFilterMenu(res);
         }}
         // onClick={() => setIsSearchActive(false)}

@@ -6,22 +6,27 @@ import Footer from "./Components/Footer";
 import Error from "./Components/Error";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
-import ResturantDetails from "./Components/ResturantDetails";
+import ResturantMenu from "./Components/ResturantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./Store";
+import Cart from "./Components/Cart";
 const MainContainer = () => {
   return (
     <React.StrictMode>
-      <div className="flex flex-col h-screen">
-        <header>
-          <Navbar />
-        </header>
-        <main className="relative flex-grow">
-          <Outlet />
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
+      <Provider store={store}>
+        <div className="flex flex-col h-screen">
+          <header>
+            <Navbar />
+          </header>
+          <main className="relative flex-grow">
+            <Outlet />
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </div>
+      </Provider>
     </React.StrictMode>
   );
 };
@@ -35,7 +40,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Body /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
-      { path: "/resturant/:id", element: <ResturantDetails /> },
+      { path: "/cart", element: <Cart /> },
+      { path: "/resturant/:id", element: <ResturantMenu /> },
     ],
   },
 ]);
