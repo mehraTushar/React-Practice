@@ -10,7 +10,7 @@ function MenuItem({ Item }) {
   const Quantity = useSelector((state) =>
     state.cart.cartItems?.map((currVal) => currVal.Id == Item.Id)
   );
-  console.log(Quantity);
+
   let currItem = {
     Id: Item.id,
     price: Item.defaultPrice === null ? Item.price : Item.defaultPrice,
