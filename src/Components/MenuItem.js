@@ -1,29 +1,30 @@
-import { useState } from "react";
 import { imgUrl } from "../config";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../Features/Cart/CartSlice";
 import AddItem from "./AddItem";
 
-function MenuItem({ Item }) {
+function MenuItem({ Item, Resturant }) {
   const dispatch = useDispatch();
-  const [isAddActive, setIsaddActive] = useState(false);
-  const Quantity = useSelector((state) =>
-    state.cart.cartItems?.map((currVal) => currVal.Id == Item.Id)
+  const cart = useSelector(
+    (state) => state.cart.cartItems.find((x) => x.Id == Item.id)?.Quantity || 0
   );
-
   let currItem = {
+    ResturantID: Resturant.id,
+    ResturantName: Resturant.name,
+    ResturantAreaName: Resturant.areaName,
     Id: Item.id,
-    price: Item.defaultPrice === null ? Item.price : Item.defaultPrice,
+    price: Item.defaultPrice === undefined ? Item.price : Item.defaultPrice,
     Name: Item.name,
     Quantity: 1,
   };
+  // console.log(Item.defaultPrice === undefined ? Item.price : Item.defaultPrice);
   return (
     <div className=" flex justify-between pt-10">
       <div className=" flex flex-col gap-1">
         <h3 className="font-bold">{Item.name}</h3>
         <p className=" font-semibold">
           ₹
-          {Item.defaultPrice == null
+          {Item.defaultPrice == undefined
             ? Item.price / 100
             : Item.defaultPrice / 100}
         </p>
@@ -36,16 +37,15 @@ function MenuItem({ Item }) {
           loading="lazy"
           className=" rounded"
         ></img>
-        {isAddActive ? (
+        {cart !== 0 ? (
           <AddItem
+            cart={cart}
             item={currItem}
-            setIsaddActive={setIsaddActive}
             className="bg-slate-50 text-green-500 flex gap-5 justify-evenly py-2 px-4 absolute -bottom-2 border border-gray-400 left-14 font-bold rounded"
           ></AddItem>
         ) : (
           <button
             onClick={() => {
-              setIsaddActive(true);
               dispatch(addItem(currItem));
             }}
             type="button"

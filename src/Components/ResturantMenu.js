@@ -24,11 +24,11 @@ const ResturantMenu = () => {
   useEffect(() => {
     const res = useResturantById(id);
     res.then((json) => {
-      const res =
+      const data =
         json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
           ?.card?.itemCards;
-      setMenu(res);
-      setFilterMenu(res);
+      setMenu(data);
+      setFilterMenu(data);
       setResturant(json?.data?.cards[0]?.card?.card?.info);
     });
   }, []);
@@ -76,7 +76,7 @@ const ResturantMenu = () => {
                 </span>
               ))}
             </p>
-            <p>{Resturant.areaName}</p>
+            <p>{Resturant?.areaName}</p>
           </div>
           <div className="flex flex-col justify-center items-center gap-3 border border-gray-300 rounded p-2">
             <span
@@ -118,13 +118,14 @@ const ResturantMenu = () => {
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <div className="pt-8">
           <div>
-            {FilterMenu.length === 0 ? (
+            {FilterMenu?.length === 0 ? (
               <NoMatch></NoMatch>
             ) : (
-              FilterMenu.map((menuItem) => {
+              FilterMenu?.map((menuItem) => {
                 return (
                   <>
                     <MenuItem
+                      Resturant={Resturant}
                       Item={menuItem.card.info}
                       key={menuItem.card.info.id}
                     ></MenuItem>

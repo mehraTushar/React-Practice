@@ -30,10 +30,10 @@ export const ResturantMenuShimmer = () => {
       <div className="rounded bg-gray-400 h-60 animate-pulse"></div>
       <div className="animate-pulse flex space-x-4">
         <div className="flex-1 space-y-8 py-3">
-          {Array(6)
+          {Array(4)
             .fill("")
             .map((e, i) => {
-              return <div key={i} className="h-6 bg-gray-400 rounded"></div>;
+              return <div key={i} className="h-10 bg-gray-400 rounded"></div>;
             })}
         </div>
       </div>
