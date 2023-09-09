@@ -47,10 +47,12 @@ const CartDetails = () => {
           <p>Item Total</p>
           <p>
             ₹
-            {cartList?.reduce(
-              (acc, curr) => acc + (curr?.price * curr?.Quantity) / 100,
-              0
-            )}
+            {cartList
+              ?.reduce(
+                (acc, curr) => acc + (curr?.price * curr?.Quantity) / 100,
+                0
+              )
+              .toFixed(2)}
           </p>
         </div>
         <hr className="h-px my-6 bg-gray-200 border-0 dark:bg-gray-400"></hr>
@@ -63,10 +65,12 @@ const CartDetails = () => {
           <p className=" font-bold">To Pay</p>
           <p className=" font-bold">
             ₹
-            {cartList?.reduce(
-              (acc, curr) => acc + (curr?.price * curr?.Quantity) / 100,
-              0
-            )}
+            {cartList
+              ?.reduce(
+                (acc, curr) => acc + (curr?.price * curr?.Quantity) / 100,
+                0
+              )
+              .toFixed(2)}
           </p>
         </div>
         <hr className="h-px my-6 bg-gray-200 border-0 dark:bg-gray-400"></hr>
