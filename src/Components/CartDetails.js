@@ -18,7 +18,17 @@ const CartDetails = () => {
         </div>
       </div>
       <div
-        className={`flex flex-col gap-5 mt-4 overflow-y-auto h-64 cartItems`}
+        className={`flex flex-col gap-5 mt-4 overflow-y-auto ${
+          cartList.length === 1
+            ? "h-22"
+            : cartList.length === 2
+            ? "h-38"
+            : cartList.length === 3
+            ? "h-54"
+            : cartList.length === 4
+            ? "h-54"
+            : "h-64"
+        } cartItems`}
       >
         {cartList?.map((item) => (
           <CartItem item={item} key={item.Id} />
