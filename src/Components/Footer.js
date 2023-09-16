@@ -9,9 +9,9 @@ const Footer = () => {
         <section>&copy; {new Date().getFullYear()} Hungry Hub</section>
         // <section>Made With 💕 By Tushar Mehra</section>
         <section>
-          <Link to={GitRepoPath} target="_blank">
-            // <img src={githubIcon} alt="github icon" className=" w-8" />
-          </Link>
+          // <Link to={GitRepoPath} target="_blank">
+          //   <img src={githubIcon} alt="github icon" className=" w-8" />
+          // </Link>
         </section>
       </footer>
     </>
