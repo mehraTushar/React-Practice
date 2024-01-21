@@ -13,7 +13,7 @@ export const filterArrList = [
 
 export const ResturantDetailsUrl =
   // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&offset=1";
-  `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7046486&lng=76.71787259999999&page_type=DESKTOP_WEB_LISTING`;
+  `https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7258091&lng=76.6715462&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
 
 export const NavbarLinksArr = ["Home", "About", "Contact", "Cart"];
 
