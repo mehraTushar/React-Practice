@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { filterArrList } from "../config";
+import { useState, useEffect } from 'react';
+import { filterArrList } from '../config';
 const Filter = ({ filterList, setFilterList, restaurantList }) => {
   const [ActiveFilter, SetActiveFilter] = useState([]);
   const filters = filterArrList;
@@ -43,9 +43,7 @@ const Filter = ({ filterList, setFilterList, restaurantList }) => {
 
     sortRestaurants
       .sort((a, b) => {
-        return (
-          a.info.costForTwo.match(/\d+/g) - b.info.costForTwo.match(/\d+/g)
-        );
+        return a.info.costForTwo.match(/\d+/g) - b.info.costForTwo.match(/\d+/g);
       })
       .reverse();
     setFilterList(sortRestaurants);
@@ -58,16 +56,16 @@ const Filter = ({ filterList, setFilterList, restaurantList }) => {
     }
     ActiveFilter.map((currFilter) => {
       switch (currFilter) {
-        case "Delivery Time":
+        case 'Delivery Time':
           filterAndSortRestaurants(filterList, setFilterList);
           break;
-        case "Rating":
+        case 'Rating':
           filterAndSortRestRating(filterList, setFilterList);
           break;
-        case "Low To High":
+        case 'Low To High':
           filterAndSortRestLowToHigh(filterList, setFilterList);
           break;
-        case "High To Low":
+        case 'High To Low':
           filterAndSortRestHighToLow(filterList, setFilterList);
           break;
         default:
@@ -80,31 +78,29 @@ const Filter = ({ filterList, setFilterList, restaurantList }) => {
   useEffect(() => {
     filterItems(filterList, setFilterList);
   }, [ActiveFilter]);
-
   return (
-    <>
-      <div className="filterSec flex justify-evenly items-center gap-1">
-        <ul className="flex items-center gap-1">
-          {filters.map((curr, i) => {
-            return (
-              <ListItem
-                key={curr}
-                onclick={() => HandelActiveFilter(curr)}
-                className={`font-semibold hover:bg-gray-200 p-2 cursor-pointer rounded-lg ${
-                  ActiveFilter.includes(curr)
-                    ? "bg-gray-400 hover:bg-gray-400"
-                    : ""
-                }`}
-              >
-                {curr}
-              </ListItem>
-            );
-          })}
-        </ul>
-      </div>
-    </>
+    <div className="filterSec flex justify-evenly items-center gap-1">
+      <ul className="flex items-center gap-1">
+        {filters.map((curr, i) => {
+          return (
+            <ListItem
+              key={curr}
+              onclick={() => HandelActiveFilter(curr)}
+              className={`font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 p-2 cursor-pointer rounded-lg ${
+                ActiveFilter.includes(curr)
+                  ? 'bg-gray-400 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-700'
+                  : ''
+              }`}
+            >
+              {curr}
+            </ListItem>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
+
 export default Filter;
 
 function ListItem({ onclick, className, children }) {
