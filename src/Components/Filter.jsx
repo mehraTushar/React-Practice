@@ -1,97 +1,82 @@
 import { useState, useEffect } from 'react';
 import { filterArrList } from '../config';
-const Filter = ({ filterList, restaurantList }) => {
-  const [ActiveFilter, SetActiveFilter] = useState([]);
-  const filters = filterArrList;
 
-  function HandelActiveFilter(e) {
-    CurrFilter = e.target.value;
-    if (ActiveFilter.includes(CurrFilter)) {
-      SetActiveFilter(ActiveFilter.filter((res) => res !== CurrFilter));
+const Filter = ({ filterList, restaurantList }) => {
+  const [activeFilter, setActiveFilter] = useState([]);
+
+  function handleActiveFilter(e) {
+    const currFilter = e.target.value;
+    if (activeFilter.includes(currFilter)) {
+      setActiveFilter(activeFilter.filter((res) => res !== currFilter));
     } else {
-      SetActiveFilter([...ActiveFilter, CurrFilter]);
+      setActiveFilter([...activeFilter, currFilter]);
     }
   }
 
-  function filterAndSortRestaurants(filterList) {
-    const sortRestaurants = [...filterList];
-    sortRestaurants.sort((a, b) => {
-      return a.info.sla.deliveryTime - b.info.sla.deliveryTime;
-    });
-    filterData = sortRestaurants;
+  function filterAndSortRestaurants(list) {
+    const sortedRestaurants = [...list].sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime);
+    filterData = sortedRestaurants;
   }
 
-  function filterAndSortRestRating(filterList) {
-    const sortRestaurants = [...filterList];
-    sortRestaurants
-      .sort((a, b) => {
-        return a.info.avgRating - b.info.avgRating;
-      })
-      .reverse();
-    filterData = sortRestaurants;
+  function filterAndSortRestRating(list) {
+    const sortedRestaurants = [...list].sort((a, b) => b.info.avgRating - a.info.avgRating);
+    filterData = sortedRestaurants;
   }
 
-  function filterAndSortRestLowToHigh(filterList) {
-    const sortRestaurants = [...filterList];
-    sortRestaurants.sort((a, b) => {
-      return a.info.costForTwo.match(/\d+/g) - b.info.costForTwo.match(/\d+/g);
-    });
-    filterData = sortRestaurants;
+  function filterAndSortRestLowToHigh(list) {
+    const sortedRestaurants = [...list].sort(
+      (a, b) => parseInt(a.info.costForTwo.match(/\d+/g)) - parseInt(b.info.costForTwo.match(/\d+/g))
+    );
+    filterData = sortedRestaurants;
   }
 
-  function filterAndSortRestHighToLow(filterList) {
-    const sortRestaurants = [...filterList];
-
-    sortRestaurants
-      .sort((a, b) => {
-        return a.info.costForTwo.match(/\d+/g) - b.info.costForTwo.match(/\d+/g);
-      })
-      .reverse();
-    filterData = sortRestaurants;
+  function filterAndSortRestHighToLow(list) {
+    const sortedRestaurants = [...list].sort(
+      (a, b) => parseInt(b.info.costForTwo.match(/\d+/g)) - parseInt(a.info.costForTwo.match(/\d+/g))
+    );
+    filterData = sortedRestaurants;
   }
 
-  function filterItems(filterList) {
-    if (!ActiveFilter.length) {
+  function filterItems(list) {
+    if (!activeFilter.length) {
       filterData = restaurantList;
       return;
     }
-    ActiveFilter.map((currFilter) => {
+    activeFilter.forEach((currFilter) => {
       switch (currFilter) {
         case 'Delivery Time':
-          filterAndSortRestaurants(filterList);
+          filterAndSortRestaurants(list);
           break;
         case 'Rating':
-          filterAndSortRestRating(filterList);
+          filterAndSortRestRating(list);
           break;
         case 'Low To High':
-          filterAndSortRestLowToHigh(filterList);
+          filterAndSortRestLowToHigh(list);
           break;
         case 'High To Low':
-          filterAndSortRestHighToLow(filterList);
+          filterAndSortRestHighToLow(list);
           break;
         default:
           break;
       }
     });
-    // setFilterList();
   }
 
   useEffect(() => {
     filterItems(filterList);
-  }, [ActiveFilter]);
+  }, [activeFilter, filterList, restaurantList]);
+
   return (
     <div className="filterSec flex justify-evenly items-center gap-1">
-      <select className="p-2 bg-gray-200 dark:bg-gray-800 " onChange={HandelActiveFilter}>
-        {filters.map((curr) => {
-          return (
-            <option
-              key={curr}
-              className={`font-semibold hover:bg-gray-200 dark:hover:bg-gray-200 p-2 cursor-pointer rounded-lg`}
-            >
-              {curr}
-            </option>
-          );
-        })}
+      <select className="p-2 bg-gray-200 dark:bg-gray-800" onChange={handleActiveFilter}>
+        {filterArrList.map((curr) => (
+          <option
+            key={curr}
+            className="font-semibold hover:bg-gray-200 dark:hover:bg-gray-200 p-2 cursor-pointer rounded-lg"
+          >
+            {curr}
+          </option>
+        ))}
       </select>
     </div>
   );
