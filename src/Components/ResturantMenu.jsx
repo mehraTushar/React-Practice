@@ -4,37 +4,36 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faIndianRupeeSign, faMagnifyingGlass, faStar } from '@fortawesome/free-solid-svg-icons';
 
 import { ResturantMenuShimmer } from './Shimmer';
-import { useResturantById } from '../hooks/useResturantById';
 import BreadCrumb from './Breadcrumb';
 import { ExpandSearchBar } from './Search';
 import NoMatch from './NoMatch';
 import MenuCategory from './MenuCategory';
+import { ResturantMenuUrl } from '../config';
+import { useFetchApi } from '../hooks/useFetchApi';
+import { useFilterMenuList } from '../hooks/useFilterMenuList';
 const ResturantMenu = () => {
   const { id } = useParams();
   const [Menu, setMenu] = useState('');
-  const [FilterMenu, setFilterMenu] = useState('');
   const [Resturant, setResturant] = useState('');
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchMenu, setSearchMenu] = useState('');
   useEffect(() => {
-    const res = useResturantById(id);
+    const res = useFetchApi(ResturantMenuUrl + id);
     res.then((json) => {
       const data = json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
       setMenu(data);
-      setFilterMenu(data);
       setResturant(json?.data?.cards[2]?.card?.card?.info);
     });
   }, []);
+  var filterData = useFilterMenuList(searchMenu, Menu);
   // return <ResturantinfoShimmer />;
   const searchMenuProps = {
     searchMenu: searchMenu,
     setSearchMenu: setSearchMenu,
-    Menu: Menu,
-    setFilterMenu: setFilterMenu,
     setIsSearchActive: setIsSearchActive,
   };
 
-  if (FilterMenu === '' && Resturant === '') return <ResturantMenuShimmer />;
+  if (filterData === '' && Resturant === '') return <ResturantMenuShimmer />;
 
   return (
     <>
@@ -98,14 +97,16 @@ const ResturantMenu = () => {
         </div>
         <hr className="h-px mt-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <div className="pt-8">
-          {FilterMenu?.length === 0 ? (
+          {filterData?.length === 0 ? (
             <NoMatch />
           ) : (
-            FilterMenu?.filter((item) => {
-              return item.card.card.title !== undefined && item?.card?.card?.itemCards !== undefined;
-            }).map((item, index) => {
-              return <MenuCategory item={item} index={index} key={item.card.card.title} Resturant={Resturant} />;
-            })
+            filterData
+              ?.filter((item) => {
+                return item.card.card.title !== undefined && item?.card?.card?.itemCards !== undefined;
+              })
+              .map((item, index) => {
+                return <MenuCategory item={item} index={index} key={item.card.card.title} Resturant={Resturant} />;
+              })
           )}
         </div>
       </section>

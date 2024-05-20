@@ -1,9 +1,8 @@
-import { useFilterMenuList } from '../hooks/useFilterMenuList';
 import { useFilterCard } from '../hooks/useFilterCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-const Search = ({ Text, RestaurantList, SetText, filterData }) => {
+const Search = ({ Text, SetText }) => {
   return (
     <div className="flex-1">
       <input
@@ -13,15 +12,13 @@ const Search = ({ Text, RestaurantList, SetText, filterData }) => {
         value={Text}
         onChange={(e) => {
           SetText(e.target.value);
-          const res = useFilterCard(e.target.value.trim(), RestaurantList);
-          filterData = res;
         }}
       />
     </div>
   );
 };
 
-export const ExpandSearchBar = ({ searchMenu, setSearchMenu, Menu, setFilterMenu, setIsSearchActive }) => {
+export const ExpandSearchBar = ({ searchMenu, setSearchMenu, setIsSearchActive }) => {
   return (
     <>
       <input
@@ -31,8 +28,6 @@ export const ExpandSearchBar = ({ searchMenu, setSearchMenu, Menu, setFilterMenu
         value={searchMenu}
         onChange={(e) => {
           setSearchMenu(e.target.value);
-          const res = useFilterMenuList(e.target.value.trim(), Menu);
-          setFilterMenu(res);
         }}
         // onClick={() => setIsSearchActive(false)}
       />
@@ -42,7 +37,6 @@ export const ExpandSearchBar = ({ searchMenu, setSearchMenu, Menu, setFilterMenu
         onClick={() => {
           setIsSearchActive(false);
           setSearchMenu('');
-          setFilterMenu(Menu?.itemCards);
         }}
       />
     </>

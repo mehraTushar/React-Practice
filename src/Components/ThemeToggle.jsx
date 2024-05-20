@@ -31,7 +31,6 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    console.log(isDarkmode);
     if (isDarkmode == true) root.classList.add('dark');
     else root.classList.remove('dark');
     localStorage.setItem('isDarkmode', isDarkmode);

@@ -6,6 +6,7 @@ import Search from './Search';
 import FilterCards from './FilterCard.jsx';
 import NoMatch from './NoMatch.jsx';
 import { Header } from './Header.jsx';
+import Filter from './Filter.jsx';
 
 const Body = () => {
   const [searchText, setSearchText] = useState('');
@@ -31,15 +32,13 @@ const Body = () => {
   const searchProps = {
     Text: searchText,
     SetText: setSearchText,
-    RestaurantList: restaurantList,
-    filterData,
   };
   return (
     <>
       <Header headerList={headerList?.imageGridCards.info} />
       <section className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 bg-white dark:bg-black text-black dark:text-white">
         <Search {...searchProps} />
-        {/* <Filter restaurantList={restaurantList} /> */}
+        <Filter restaurantList={restaurantList} filterList={filterData} />
       </section>
       {filterData?.length === 0 ? (
         <NoMatch className="bg-white dark:bg-black text-black dark:text-white" />

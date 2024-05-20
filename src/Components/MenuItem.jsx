@@ -4,7 +4,6 @@ import { addItem } from '../Features/Cart/CartSlice';
 import AddItem from './AddItem';
 
 function MenuItem({ Item, Resturant }) {
-  console.log(Item.id);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cartItems.find((x) => x.Id == Item.id)?.Quantity || 0);
   let currItem = {
