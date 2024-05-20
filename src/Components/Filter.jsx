@@ -50,32 +50,6 @@ const Filter = ({ filterList, restaurantList }) => {
     filterData = sortRestaurants;
   }
 
-  function filterItems(filterList) {
-    if (!ActiveFilter.length) {
-      filterData = restaurantList;
-      return;
-    }
-    ActiveFilter.map((currFilter) => {
-      switch (currFilter) {
-        case 'Delivery Time':
-          filterAndSortRestaurants(filterList);
-          break;
-        case 'Rating':
-          filterAndSortRestRating(filterList);
-          break;
-        case 'Low To High':
-          filterAndSortRestLowToHigh(filterList);
-          break;
-        case 'High To Low':
-          filterAndSortRestHighToLow(filterList);
-          break;
-        default:
-          break;
-      }
-    });
-    // setFilterList();
-  }
-
   useEffect(() => {
     filterItems(filterList);
   }, [ActiveFilter]);
@@ -98,3 +72,28 @@ const Filter = ({ filterList, restaurantList }) => {
 };
 
 export default Filter;
+function filterItems(filterList) {
+  if (!ActiveFilter.length) {
+    filterData = restaurantList;
+    return;
+  }
+  ActiveFilter.map((currFilter) => {
+    switch (currFilter) {
+      case 'Delivery Time':
+        filterAndSortRestaurants(filterList);
+        break;
+      case 'Rating':
+        filterAndSortRestRating(filterList);
+        break;
+      case 'Low To High':
+        filterAndSortRestLowToHigh(filterList);
+        break;
+      case 'High To Low':
+        filterAndSortRestHighToLow(filterList);
+        break;
+      default:
+        break;
+    }
+  });
+  // setFilterList();
+}
