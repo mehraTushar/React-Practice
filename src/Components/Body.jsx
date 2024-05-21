@@ -38,7 +38,7 @@ const Body = () => {
       <Header headerList={headerList?.imageGridCards.info} />
       <section className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 bg-white dark:bg-black text-black dark:text-white">
         <Search {...searchProps} />
-        <Filter restaurantList={restaurantList} filterList={filterData} />
+        {/* <Filter restaurantList={restaurantList} filterList={filterData} /> */}
       </section>
       {filterData?.length === 0 ? (
         <NoMatch className="bg-white dark:bg-black text-black dark:text-white" />
