@@ -8,7 +8,7 @@ import CartDetails from './CartDetails';
 import CartEmpty from './CartEmpty';
 
 const Cart = () => {
-  const cartList = useSelector((state) => state.cart.cartItems);
+  const cartList = useSelector((state) => state.Resturant.cartItems);
   const [address, setAddress] = useState('');
 
   useEffect(() => {

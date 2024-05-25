@@ -5,19 +5,19 @@ import { NavbarLinksArr } from '../config';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
-  const cartItemCount = useSelector((state) =>
-    state.cart.cartItems?.reduce((acc, currVal) => acc + currVal.Quantity, 0)
-  );
+  const cartItemCount = useSelector((state) => {
+    return state.Resturant.cartItems?.reduce((acc, currVal) => acc + currVal.Quantity, 0);
+  });
 
   return (
     <nav className="Navbar mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 bg-white dark:bg-black">
       <Logo />
       <div>
-        <ul className="navbarLinks flex gap-4">
+        <ul className="navbarLinks flex gap-4 place-items-center">
           {NavbarLinksArr.map((link, index) =>
             link.name === 'Cart' ? (
-              <li key={index} className="relative flex items-center justify-center">
-                <Link to={link.url} className="font-semibold flex items-center text-black dark:text-white">
+              <li key={index}>
+                <Link to={link.url} className="font-semibold flex text-black dark:text-white">
                   {link.name}
                   <svg
                     className="fill-white dark:fill-gray-600 stroke-slate-700 dark:stroke-gray-400 stroke-2 ml-2"

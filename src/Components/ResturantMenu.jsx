@@ -11,12 +11,14 @@ import MenuCategory from './MenuCategory';
 import { ResturantMenuUrl } from '../config';
 import { useFetchApi } from '../hooks/useFetchApi';
 import { useFilterMenuList } from '../hooks/useFilterMenuList';
+import { useSelector } from 'react-redux';
 const ResturantMenu = () => {
   const { id } = useParams();
   const [Menu, setMenu] = useState('');
   const [Resturant, setResturant] = useState('');
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchMenu, setSearchMenu] = useState('');
+  const resInfo = useSelector((state) => state.Resturant.info);
   useEffect(() => {
     const res = useFetchApi(ResturantMenuUrl + id);
     res.then((json) => {
@@ -34,13 +36,12 @@ const ResturantMenu = () => {
   };
 
   if (filterData === '' && Resturant === '') return <ResturantMenuShimmer />;
-
   return (
     <>
       <section className="mx-auto max-w-7xl  p-6 lg:px-8 dark:bg-black">
         <div className="flex justify-between items-center">
           <div>
-            <BreadCrumb Resturant={Resturant}></BreadCrumb>
+            <BreadCrumb name={Resturant.name} city={Resturant.city} />
           </div>
           <div className="relative">
             {isSearchActive ? (
@@ -86,7 +87,7 @@ const ResturantMenu = () => {
             <span>
               <FontAwesomeIcon icon={faClock} size="lg" />
             </span>
-            <span>24 mins</span>
+            <span>{resInfo}</span>
           </div>
           <div className="font-bold flex gap-2 items-center justify-center">
             <span className="">

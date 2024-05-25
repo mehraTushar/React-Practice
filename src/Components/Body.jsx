@@ -6,7 +6,6 @@ import Search from './Search';
 import FilterCards from './FilterCard.jsx';
 import NoMatch from './NoMatch.jsx';
 import { Header } from './Header.jsx';
-import Filter from './Filter.jsx';
 
 const Body = () => {
   const [searchText, setSearchText] = useState('');

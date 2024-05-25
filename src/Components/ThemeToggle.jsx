@@ -41,14 +41,14 @@ const ThemeToggle = () => {
   };
 
   return (
-    <div
+    <li
       onClick={toggleTheme}
       className={`w-8 h-8 relative rounded-full transition duration-500 transform p-1 text-white ${
         isDarkmode == true ? 'bg-gray-700' : 'bg-yellow-500'
       }`}
     >
       {isDarkmode == true ? darkIcon : lightIcon}
-    </div>
+    </li>
   );
 };
 

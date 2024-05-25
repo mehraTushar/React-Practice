@@ -3,7 +3,7 @@ import CartItem from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 
 const CartDetails = () => {
-  const cartList = useSelector((state) => state.cart.cartItems);
+  const cartList = useSelector((state) => state.Resturant.cartItems);
 
   return (
     <div className="h-full w-96 p-6 shadow-2xl ml-8 bg-white dark:bg-black text-black dark:text-white">
