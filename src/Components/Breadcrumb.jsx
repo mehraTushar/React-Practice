@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const BreadCrumb = ({ Resturant }) => {
+const BreadCrumb = ({ city, name }) => {
   return (
     <nav className="flex" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
         <li className="inline-flex items-center">
           <Link
-            to={"/"}
+            to={'/'}
             key="Home"
             className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-400"
           >
@@ -39,11 +39,8 @@ const BreadCrumb = ({ Resturant }) => {
                 d="m1 9 4-4-4-4"
               />
             </svg>
-            <span
-              href="#"
-              className="ml-1 text-sm font-medium text-gray-700 md:ml-2 dark:text-gray-400"
-            >
-              {Resturant.city}
+            <span href="#" className="ml-1 text-sm font-medium text-gray-700 md:ml-2 dark:text-gray-400">
+              {city}
             </span>
           </div>
         </li>
@@ -64,9 +61,7 @@ const BreadCrumb = ({ Resturant }) => {
                 d="m1 9 4-4-4-4"
               />
             </svg>
-            <span className="ml-1 text-sm font-medium text-gray-700 md:ml-2 dark:text-gray-700">
-              {Resturant.name}
-            </span>
+            <span className="ml-1 text-sm font-medium text-gray-700 md:ml-2 dark:text-gray-400">{name}</span>
           </div>
         </li>
       </ol>
