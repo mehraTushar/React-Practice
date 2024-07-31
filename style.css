@@ -7,6 +7,10 @@
   --primary: transparent;
   --secondary: #a8a8a8;
 }
+div#root {
+  position: relative;
+  height: 100vh;
+}
 .cartItems::-webkit-scrollbar {
   width: 10px;
 }

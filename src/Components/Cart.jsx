@@ -6,9 +6,13 @@ import { useSelector } from 'react-redux';
 import { faCircleUser, faLocationDot, faWallet, faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import CartDetails from './CartDetails';
 import CartEmpty from './CartEmpty';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { CartNotLoggedIn } from './CartNotLoggedIn';
 
 const Cart = () => {
   const cartList = useSelector((state) => state.Resturant.cartItems);
+
+  const userId = useLocalStorage('loggedInUser');
   const [address, setAddress] = useState('');
 
   useEffect(() => {
@@ -26,15 +30,7 @@ const Cart = () => {
     <section className="mx-auto max-w-7xl p-6 lg:px-8 flex bg-white dark:bg-black text-black dark:text-white">
       <div className="flex flex-col gap-10 flex-grow">
         <CartCard>
-          <div className="text-xl font-semibold">
-            <span>Please Login</span>
-            <FontAwesomeIcon icon={faCircleXmark} size="xl" className="text-red-500 ml-2" />
-          </div>
-          <div className="text-xl font-semibold">Username | Phone No</div>
-          <div>
-            <FontAwesomeIcon icon={faCircleUser} size="3x" className="absolute top-10 -left-8" />
-            <div className="absolute top-20 w-0.5 h-full -left-2 bg-black"></div>
-          </div>
+          <CartNotLoggedIn userId={userId} />
         </CartCard>
         <CartCard>
           <div className="text-xl font-semibold">

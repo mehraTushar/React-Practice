@@ -6,11 +6,11 @@ export const Header = ({ headerList }) => {
 
   return (
     <section className="mx-auto max-w-7xl flex gap-5">
-      {headerList.map((header, index) => (
-        <div key={index} className="">
-          <img src={imgUrl + header.imageId} alt="Header" className="blend-multiply" />
+      {headerList.map(({ imageId }, index) => (
+        <div key={imageId || index}>
+          <img src={`${imgUrl}${imageId}`} alt="Header" className="blend-multiply" />
           {/* Uncomment below line if you want to display action text */}
-          {/* <p className="text-center mt-2">{header.action.text}</p> */}
+          {/* action && <p className="text-center mt-2">{action.text}</p> */}
         </div>
       ))}
     </section>
