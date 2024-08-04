@@ -23,7 +23,7 @@ export const RegisterForm = ({ setIsLogin }) => {
   };
 
   function obSubmit(data) {
-    var { userEmail, userPass } = data;
+    var { userName, userEmail, userPass } = data;
     var jsonUserList = JSON.parse(useLocalStorage('userList') || '[]');
 
     var isUserExist = jsonUserList.filter((user) => {
@@ -33,7 +33,7 @@ export const RegisterForm = ({ setIsLogin }) => {
       useSwal('Error', 'User With Same Email Already Exist', 'error');
       return;
     }
-    useLocalStorage('userList', [...jsonUserList, { userId: crypto.randomUUID(), userEmail, userPass }]);
+    useLocalStorage('userList', [...jsonUserList, { userId: crypto.randomUUID(), userName, userEmail, userPass }]);
     useSwalToast('success', 'New User Created Successfully');
     reset();
     navigate('/login');
@@ -41,25 +41,30 @@ export const RegisterForm = ({ setIsLogin }) => {
 
   return (
     <form onSubmit={handleSubmit(obSubmit)}>
-      <p className="mb-4">Please Regsiter your account</p>
-      <InputField
-        id="userEmail"
-        type="email"
-        label="Email"
-        placeholder="john@gmail.com"
-        {...registerObj}
-        regex={EmailRegex}
-      />
-      <InputField id="userPass" type="password" label="New Password" placeholder="qwerty!@#" {...registerObj} />
-      <InputField
-        id="userConfirmPass"
-        type="password"
-        label="Confirm Password"
-        placeholder="qwerty!@#"
-        {...registerObj}
-      />
+      <p className="my-3">Please Regsiter your account</p>
+      <div className="flex gap-2">
+        <InputField id="userName" type="text" label="Name" placeholder="John" {...registerObj} />
+        <InputField
+          id="userEmail"
+          type="email"
+          label="Email"
+          placeholder="john@gmail.com"
+          {...registerObj}
+          regex={EmailRegex}
+        />
+      </div>
+      <div className="flex gap-2">
+        <InputField id="userPass" type="password" label="New Password" placeholder="qwerty!@#" {...registerObj} />
+        <InputField
+          id="userConfirmPass"
+          type="password"
+          label="Confirm Password"
+          placeholder="qwerty!@#"
+          {...registerObj}
+        />
+      </div>
 
-      <div className="mb-12 pb-1 pt-1 text-center">
+      <div className="mb-8 pb-1 pt-1 text-center">
         <button
           type="submit"
           className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"

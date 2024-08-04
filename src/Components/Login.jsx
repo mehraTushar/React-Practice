@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from './Logo';
 import InputField from './InputField';
 import { LeftContainerLogin } from './LeftContainerLogin';
+import loginSvg from '../assests/special_event.svg';
 
 export default function Login() {
   return (
@@ -20,14 +21,7 @@ export default function Login() {
                     background: 'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
                   }}
                 >
-                  <div className="px-4 py-6 text-white md:mx-6 md:p-12">
-                    <h4 className="mb-6 text-xl font-semibold">We are more than just a company</h4>
-                    <p className="text-sm">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                      nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
+                  <img src={loginSvg} alt="" />
                 </div>
               </div>
             </div>

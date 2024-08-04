@@ -19,7 +19,7 @@ export const CartNotLoggedIn = ({ userId }) => {
         />
       </div>
       <div className="text-xl font-semibold">
-        {currUser ? `${currUser.userEmail} | ${currUser.userPass}` : 'Username | Phone No'}
+        {currUser ? `${currUser.userName} | ${currUser.userEmail}` : 'Username | Phone No'}
       </div>
       <div>
         <FontAwesomeIcon icon={faCircleUser} size="3x" className="absolute top-10 -left-8" />

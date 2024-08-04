@@ -17,7 +17,7 @@ export const LeftContainerLogin = () => {
       <div className="md:mx-6 md:p-12">
         <div className="text-center">
           <Logo />
-          <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">We are The Lotus Team</h4>
+          {/* <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">We are The Lotus Team</h4> */}
         </div>
         {islogin ? <LoginForm setIsLogin={setIsLogin} /> : <RegisterForm setIsLogin={setIsLogin} />}
       </div>

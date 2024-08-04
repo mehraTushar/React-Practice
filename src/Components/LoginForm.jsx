@@ -22,9 +22,7 @@ export const LoginForm = ({ setIsLogin }) => {
   };
 
   function onSubmit(data) {
-    console.log(data);
-    debugger;
-    const { userEmail, userPass } = data;
+    const { userEmail, userPass, userName } = data;
     const userList = JSON.parse(useLocalStorage('userList') || '[]');
 
     const user = userList.find((user) => user.userEmail === userEmail);
@@ -45,7 +43,7 @@ export const LoginForm = ({ setIsLogin }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <p className="mb-4">Please login to your account</p>
+      <p className="my-3">Please login to your account</p>
       <InputField
         id="userEmail"
         type="email"
@@ -56,7 +54,7 @@ export const LoginForm = ({ setIsLogin }) => {
       />
       <InputField id="userPass" type="password" label="Password" placeholder="qwerty!@#" {...registerObj} />
 
-      <div className="mb-12 pb-1 pt-1 text-center">
+      <div className="mb-8 pb-1 pt-1 text-center">
         <button
           type="submit"
           className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
@@ -68,7 +66,7 @@ export const LoginForm = ({ setIsLogin }) => {
         </button>
 
         {/* <!--Forgot password link--> */}
-        <a href="#!">Forgot password?</a>
+        {/* <a href="#!">Forgot password?</a> */}
       </div>
 
       {/* <!--Register button--> */}
