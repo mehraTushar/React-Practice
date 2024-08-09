@@ -8,28 +8,62 @@ import NoMatch from './NoMatch.jsx';
 import { Header } from './Header.jsx';
 import Filter from './Filter.jsx';
 import { useQuery } from '@tanstack/react-query';
+import useLocation from '../hooks/useLocation.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const Body = () => {
   const [searchText, setSearchText] = useState('');
   const [restaurantList, setRestaurantList] = useState([]);
   const [filterList, setFilterList] = useState([]);
-  // const [headerList, setHeaderList] = useState([]);
 
-  // const fetchData = async () => {
-  //   const { restaurantData, headerData } = await useRestaurant();
-  //   setRestaurantList(restaurantData);
-  //   setFilterList(restaurantData);
-  //   setHeaderList(headerData);
-  // };
+  const { latitude, longitude, loading: locationLoading } = useLocation();
 
-  const query = useQuery({ queryKey: ['Resturant'], queryFn: useRestaurant });
+  const query = useQuery({
+    queryKey: ['Restaurant', latitude, longitude],
+    queryFn: () => useRestaurant(latitude, longitude),
+    enabled: !!latitude && !!longitude,
+  });
+
   useEffect(() => {
     const filteredList = useFilterCard(searchText, restaurantList);
     setFilterList(filteredList);
   }, [searchText, restaurantList]);
-  if (query.isError) return;
-  if (query.isLoading) return <ShimmerCard />;
-  const { restaurantData, headerData } = query?.data;
+
+  if (locationLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-900 dark:border-gray-200 mb-4"></div>
+        <p className="text-xl font-semibold">Loading Location...</p>
+      </div>
+    );
+  }
+
+  if (query.isError) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+        <div className="text-xl font-semibold">Error: {query.error.message}</div>
+      </div>
+    );
+  }
+
+  if (query.isLoading) {
+    return <ShimmerCard />;
+  }
+
+  if (!query?.data?.finalData) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-900 dark:border-gray-200 mb-4"></div>
+        <p className="text-xl font-semibold">
+          Please Allow Location... <button onClick={() => window.location.reload()}>Click To Refresh</button>
+        </p>
+      </div>
+    );
+  }
+
+  const { restaurantData, headerData } = query?.data?.finalData;
+
   return (
     <>
       <Header headerList={headerData?.imageGridCards?.info} />
