@@ -39,3 +39,6 @@ div#root {
     scrollbar-width: none; /* Firefox */
   }
 }
+.custom-swal-width {
+  min-width: 50%; /* Ensures responsiveness on smaller screens */
+}

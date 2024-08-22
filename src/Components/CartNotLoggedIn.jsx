@@ -7,7 +7,6 @@ export const CartNotLoggedIn = ({ userId }) => {
   var userList = JSON.parse(useLocalStorage('userList') || '[]');
 
   var currUser = userList.find((user) => user.userId === userId);
-  debugger;
   return (
     <>
       <div className="text-xl font-semibold">
